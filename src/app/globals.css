@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fef3c7;
+  --color-gold-200: #fde68a;
+  --color-gold-300: #fcd34d;
+  --color-gold-400: #fbbf24;
+  --color-gold-500: #f59e0b;
+  --color-gold-600: #d97706;
+  --color-gold-700: #b45309;
+  --color-gold-800: #92400e;
+  --color-gold-900: #78350f;
+  
+  --color-obsidian: #020617;
+  --color-obsidian-light: #0f172a;
+  
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", var(--font-geist-sans);
+}
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --accent-gold: #d4af37;
+}
+
+@layer base {
+  body {
+    @apply bg-obsidian text-slate-50 antialiased selection:bg-gold-500/30 selection:text-gold-200;
+    font-feature-settings: "cv02", "cv05", "cv11";
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-obsidian-light/40 backdrop-blur-xl border border-slate-800/50 shadow-2xl;
+  }
+  
+  .glass-card-gold {
+    @apply bg-obsidian-light/60 backdrop-blur-2xl border border-gold-500/20 shadow-[0_0_30px_rgba(212,175,55,0.05)];
+  }
+  
+  .gold-gradient-text {
+    @apply bg-gradient-to-r from-gold-400 via-gold-200 to-gold-500 bg-clip-text text-transparent;
+  }
+  
+  .gold-button {
+    @apply bg-gradient-to-br from-gold-400 to-gold-600 hover:from-gold-300 hover:to-gold-500 text-obsidian font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] active:scale-95;
+  }
+  
+  .input-field {
+    @apply bg-obsidian/50 border border-slate-700/50 rounded-2xl py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-gold-500/50 focus:border-gold-500/50 transition-all;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
